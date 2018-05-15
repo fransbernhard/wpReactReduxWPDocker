@@ -11,7 +11,7 @@ class Home extends Component {
     const POST_URL = `${APP_URL}/wp-json/wp/v2/posts?per_page=30`
     const PAGES_URL = `${APP_URL}/wp-json/wp/v2/pages`
 
-    const token = '173775459.7b4e81a.77d3c3dd4a0a465282d198bb00fcc3ff'
+    const token = 'ACCECSS_TOKEN'
     const userId = '173775459'
     const INSTA_URL = 'https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + token
 
