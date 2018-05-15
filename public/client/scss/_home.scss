@@ -1,0 +1,27 @@
+.home-wrapper {
+  @include flexCenterCenter;
+  padding: 7rem 0rem;
+  div {
+    margin: 2rem;
+  }
+}
+
+.img {
+  max-width: 200px;
+}
+
+.test_bg {
+  width: 200px;
+	height: 200px;
+  background: url(img/bg.png) no-repeat center center scroll;
+  background-size: cover;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  z-index: -3;
+  min-height: 100%;
+}

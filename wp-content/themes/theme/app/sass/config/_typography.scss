@@ -1,0 +1,53 @@
+// Typography styling
+
+a {
+  text-decoration: none;
+	color: map-get($colors, black);
+}
+
+li {
+  list-style: none;
+}
+
+.menu-item {
+  padding: 1.5rem;
+  @include respond-to(small) {
+    padding: 1.5rem 0rem;
+  }
+  a {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    @include respond-to(small) {
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+    }
+  }
+}
+
+p {
+  font-size: 0.8rem;
+  @include respond-to(medium) {
+
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  margin-top: 4rem;
+  p {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+h3 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

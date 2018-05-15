@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+}
+
+a:focus, button:focus, input:focus {
+  outline:0 !important;
+}
+
+li {
+  list-style: none;
+}
+
+.bg {
+  @include fullSizeWH;
+  @include bg;
+}
+
+.btn {
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+  margin: 1rem;
+  border-radius: 50%;
+  background: pink;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:active {
+  background: darkgrey;
+}
+
+.img-class {
+  max-width: 200px;
+}
+
+.post-li {
+  @include flexColumnCenterCenter;
+}
+
+.post-ul {
+  @include flexCenterCenter;
+}
+
+.container {
+  @include fullSizeWH;
+  @include flexColumnCenterCenter;
+}
+
+.uls {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
+
+.post-img {
+  max-width: 200px;
+}

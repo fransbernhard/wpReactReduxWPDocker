@@ -1,0 +1,9 @@
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+  background: pink;
+  width: 100%;
+  @include flexCenterCenter;
+}
