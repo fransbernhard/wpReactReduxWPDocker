@@ -6,27 +6,38 @@
 - [Babel](https://babeljs.io/) - The compiler to compile your JS files with es6, es7, JSX syntax to regular javascript
 - [Webpack](https://webpack.js.org/) - The module binder which takes all your JS files from different directories and compiles them into a single app.bundle.js so you can include it in a HTML page
 - [ExpressJS](https://expressjs.com/) - The node framework to serve your views to the world when they hit the server at example.com or example.com/awesome.html
+- [Docker](https://www.docker.com/) - The Docker platform leverages Docker containers to enable IT operations teams and Developement teams to build, ship and run any application, anywhere.
 
 ## Installation
 *Project requires Node.js v6+ to run.*
 
-Clone the project to you're local repository. Install the dependencies + devDependencies and start backend server:
+### Start Docker
+
+#### Spin up docker containers
+docker-compose up -d
+
+#### See what is running
+docker ps
+
+#### Stop containers
+docker-compose stop
+
+### Go to frontend react - development mode
 ```
 $ cd yourLocalRepositoryRoot
 
 $ yarn install
-$ yarn dev
+$ yarn start
 
 or
 
 $ npm install
-$ npm run dev
+$ npm run start
 ```
+Navigate to http://0.0.0.0:8081 in browser to view project in development environment.
 
-Navigate to http://localhost:6000/ in browser to view project in development environment.
-
-## Build project
-Compile development files @ **src** into production files @ **dist**:
+### Build for Production
+Compile development files @ **public** into production files @ **build**:
 ```
 $ yarn build
 
@@ -35,22 +46,8 @@ or
 $ npm run build
 ```
 
-# DOCKER
+### Go to Wordpress admin
+http://0.0.0.0:80/wp-admin
 
-# Spin up containers
-docker-compose up -d
-
-# See what is running
-docker ps
-
-# Stop containers
-docker-compose stop
-
-# wordpress
-http://0.0.0.0:80
-
-# frontend react
-http://0.0.0.0:8081
-
-#phpmyAdmin
-http://0.0.0.0:
+### Access Wordpress database through phpmyAdmin
+http://0.0.0.0:8080
