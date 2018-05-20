@@ -1,0 +1,17 @@
+.post-container {
+  @include flexCenterCenter;
+
+  .post {
+    margin: 1px;
+  }
+}
+
+.post:hover {
+  border-top: 3px fuchsia solid;
+}
+
+.post-img {
+  width: 100px;
+  height: 100px;
+  @include bg;
+}

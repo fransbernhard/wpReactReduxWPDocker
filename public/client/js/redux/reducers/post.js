@@ -1,6 +1,6 @@
-import { FETCH_PAGE_BY_SLUG } from "../action-types/index"
+import { FETCH_POST_BY_SLUG } from "../action-types/index"
 
-const page = (state = {}, action) => {
+const post = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PAGE_BY_SLUG:
       return action.payload
@@ -9,4 +9,4 @@ const page = (state = {}, action) => {
   }
 }
 
-export default page
+export default post

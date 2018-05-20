@@ -1,40 +1,22 @@
-import React, {Component} from 'react'
-import {Provider} from 'react-redux'
-import {render} from 'react-dom'
-import {
-    BrowserRouter as Router,
-    Route,
-    Redirect,
-    Switch
-} from 'react-router-dom'
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
+import store, { history } from "./js/redux/store/index"
+
+import App from './js/components/containers/App'
+
 import './app.scss'
-import Home from './js/components/Home.js'
-import About from './js/components/About.js'
-import Wordpress from './js/components/Wordpress.js'
-import Info from './js/components/Info.js'
-import Header from './js/components/common/Header.js'
 
-import store from "./js/redux/store/index"
-
-const App = () => {
+const Init = () => {
   return (
     <Provider store={store}>
-      <Router>
-        <div>
-          <Header />
-          <Switch>
-            <Route exact path={'/'} component={Home}/>
-            <Route exact path={'/about'} component={About}/>
-            <Route exact path={'/wordpress'} component={Wordpress}/>
-            <Route exact path={'/info'} component={Info}/>
-            <Route render={() => { return <Redirect to="/" />}} />
-          </Switch>
-        </div>
-      </Router>
+      <App />
     </Provider>
   )
 }
 
-render(<App/>, document.getElementById('app'))
+render(<Init/>, document.getElementById('app'))
 
 if (module.hot) { module.hot.accept() }

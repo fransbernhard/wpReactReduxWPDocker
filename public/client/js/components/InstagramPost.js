@@ -5,12 +5,12 @@ class InstagramPost extends Component {
   render() {
     return (
       <div>
-        <h1>INSTAGRAM</h1>
-        <ul className="uls">
+        <h2>INSTAGRAM</h2>
+        <ul className="instagram-ul">
           { this.props.insta && this.props.insta.length ?
             this.props.insta.map((post, i) =>
               <li key={i}>
-                <a href={post.link}><img src={post.images.thumbnail.url} /></a>
+                <a target="_blank" href={post.link}><img src={post.images.thumbnail.url} /></a>
               </li>
             ) : null
           }

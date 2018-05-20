@@ -5,7 +5,7 @@ class GitHubPost extends Component {
   render() {
     return (
       <div>
-        <h1>GITHUB</h1>
+        <h2>GITHUB</h2>
         <ul className="git-uls">
           {this.props.git && this.props.git.length ?
             this.props.git.map((post, i) =>

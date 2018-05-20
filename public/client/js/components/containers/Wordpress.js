@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import video from '../../img/Sunset-Siesta.mp4';
+import Posts from '../Posts.js'
+import Pages from '../Pages.js'
 
 import { connect } from "react-redux";
-import { fetchAll } from "../redux/actions/index"
+import { fetchAll } from "../../redux/actions/index"
 import { bindActionCreators } from "redux"
 
-class Home extends Component {
+class Wordpress extends Component {
   componentDidMount(){
     const APP_URL = 'http://0.0.0.0:80'
+    const POST_URL = `${APP_URL}/wp-json/wp/v2/posts?per_page=30`
     const PAGES_URL = `${APP_URL}/wp-json/wp/v2/pages`
 
+    this.props.fetchAll(POST_URL)
     this.props.fetchAll(PAGES_URL)
   }
 
@@ -17,9 +20,10 @@ class Home extends Component {
     return (
       <div className="bg">
         <div className="home-wrapper">
-          <video autoPlay muted loop id="myVideo">
-            <source src={video} type="video/mp4"/>
-          </video>
+          <h2>Wordpress Posts</h2>
+          <Posts/>
+          <h2>Wordpress Pages</h2>
+          <Pages />
         </div>
       </div>
     )
@@ -30,4 +34,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({fetchAll}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Wordpress);

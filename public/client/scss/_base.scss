@@ -38,12 +38,11 @@ li {
   max-width: 200px;
 }
 
-.post-li {
-  @include flexColumnCenterCenter;
-}
-
-.post-ul {
+.pages-ul {
   @include flexCenterCenter;
+  li {
+    padding: 1rem;
+  }
 }
 
 .container {
@@ -51,12 +50,19 @@ li {
   @include flexColumnCenterCenter;
 }
 
-.uls {
+.instagram-ul {
   display: flex;
   flex-wrap: wrap;
-  max-width: 600px;
+  max-width: 700px;
+
+  li {
+    margin: 0px 2px;
+  }
 }
 
-.post-img {
-  max-width: 200px;
+.wp-pages-ul {
+  display: flex;
+  a {
+    margin: 5px;
+  }
 }

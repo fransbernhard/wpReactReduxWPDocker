@@ -2,15 +2,13 @@ import { combineReducers } from 'redux'
 import posts from './posts'
 import pages from './pages'
 import insta from './insta'
-import page from './page'
 import git from './git'
 
-const mimiApp = combineReducers({
+const app = combineReducers({
   posts,
   git,
   insta,
-  pages,
-  page
+  pages
 })
 
-export default mimiApp;
+export default app

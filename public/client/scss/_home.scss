@@ -1,9 +1,15 @@
-.home-wrapper {
-  @include flexCenterCenter;
+.info-wrapper {
+  display: flex;
+  justify-content: center;
   padding: 7rem 0rem;
   div {
     margin: 2rem;
   }
+}
+
+.home-wrapper {
+  @include fullSizeWH;
+  @include flexColumnCenterCenter;
 }
 
 .img {
