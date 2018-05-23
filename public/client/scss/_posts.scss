@@ -6,12 +6,27 @@
   }
 }
 
-.post:hover {
-  border-top: 3px fuchsia solid;
+.post {
+  display: inline-block;
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+}
+
+.flower-post {
+  cursor: pointer;
 }
 
 .post-img {
-  width: 100px;
-  height: 100px;
+  height: 100%;
+  width: 100%;
   @include bg;
+  display: block;
+  transition: .2s ease-in-out;
+  @include flexCenterCenter;
+}
+
+.post:hover .post-img,
+.post:focus .post-img {
+  transform: scale(1.1);
 }

@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import { connect } from "react-redux";
 
-class Page extends Component {
+class Pages extends Component {
 
 	render(){
 	  return (
-			<ul className="pages-ul">
+			<div className="pages-ul">
 				{
 					this.props.pages.map((page, i) =>
-						<li key={i}>
+						<Link key={i} to={`/${page.slug}`}>
 							{page.title.rendered}
-						</li>
+						</Link>
 					)
 				}
-      </ul>
+      </div>
     )
   }
 }
@@ -22,4 +23,4 @@ const mapStateToProps = pages => {
   return pages
 }
 
-export default connect(mapStateToProps)(Page)
+export default connect(mapStateToProps)(Pages)

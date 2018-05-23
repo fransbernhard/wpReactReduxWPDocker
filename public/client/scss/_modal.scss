@@ -1,0 +1,40 @@
+.modal-img {
+  width: $fullSizePercent;
+  @include bg;
+  height: 500px;
+}
+
+.modal-text {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.modalDiv {
+  width: 95vw;
+  margin-top: 5.5rem;
+  @include respond-to(medium) {
+    width: 60vw;
+  }
+  button {
+    color: map-get($colors, black);
+    align-self: flex-end;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0 10px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    @include respond-to(small) {
+      color: map-get($colors, white);
+    }
+  }
+}
+
+.subContainer {
+  background: map-get($colors, white);
+  max-height: 85vh;
+  overflow: scroll;
+  h1 {
+    margin-top: 1rem;
+  }
+}

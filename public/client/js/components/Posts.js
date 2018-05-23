@@ -11,7 +11,6 @@ class Posts extends Component {
 					this.props.posts.map((post, i) =>
 						<Link key={i} to={`/archive/${post.slug}`} className="post">
 							<div className="post-img" style={{backgroundImage: `url(${post.featured_image_src})`}}/>
-							<h3 className="post-title">{post.title.rendered}</h3>
 						</Link>
 					)
 				}

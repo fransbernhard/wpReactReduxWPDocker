@@ -1,0 +1,75 @@
+// Mixins for flexbox styling
+
+@mixin flexColumn {
+  display: flex;
+  flex-flow: column;
+}
+
+@mixin flexCenterCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexCenterSB {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flexColumnCenter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+@mixin flexColumnCenterCenter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexSACenter {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column;
+  align-items: center;
+}
+
+@mixin bg {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin bg-top {
+  background: no-repeat top center scroll;
+  background-size: cover;
+}
+
+@mixin fullSizePercent {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fullSizeWH {
+  width: 100vw;
+  height: 100vh;
+}
+
+// Mixins for breakpoints
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}

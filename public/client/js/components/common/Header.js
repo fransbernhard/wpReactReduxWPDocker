@@ -11,6 +11,7 @@ class Header extends Component {
             <li><Link to={"/about"}>About</Link></li>
             <li><Link to={"/wordpress"}>Wordpress</Link></li>
             <li><Link to={"/info"}>Info</Link></li>
+            <li><Link to={"/products"}>Products</Link></li>
           </ul>
         </nav>
       </header>

@@ -18,7 +18,7 @@ class Info extends Component {
 
   render() {
     return (
-      <div className="bg">
+      <div className="bg colorBg">
         <div className="info-wrapper">
           <InstagramPost />
           <GitHubPost />

@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  background: yellow;
+}
+
+.page-container {
+  width: 100vw;
+  @include flexColumnCenterCenter;
+}
+
+.page-wrapper {
+  max-width: 940px;
+}

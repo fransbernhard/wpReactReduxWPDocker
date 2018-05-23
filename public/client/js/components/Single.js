@@ -21,7 +21,7 @@ class Single extends Component {
       <div className="container">
         <div className="single-wrapper">
           <h1>{thisPost.title.rendered}</h1>
-          <img src={thisPost.featured_image_src} className="yes"/>
+          <img src={thisPost.featured_image_src} className="single-img"/>
         </div>
       </div>
     )

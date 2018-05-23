@@ -1,0 +1,36 @@
+// Typography styling
+
+a {
+  text-decoration: none;
+	color: map-get($colors, black);
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-size: 0.8rem;
+  @include respond-to(medium) {
+
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  margin-top: 4rem;
+  p {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+h3 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

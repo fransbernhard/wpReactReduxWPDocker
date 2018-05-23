@@ -1,4 +1,4 @@
-import Header from './common/Header.js'
+import Slider from './Slider.js'
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
@@ -19,11 +19,14 @@ class About extends Component {
 
     return (
       <div>
-        <Header/>
         <div className="bg" style={{backgroundImage: `url(${aboutPage.acf.about_image})`}}>
-          <div className="home-wrapper" >
-            <h1>Welcome to about page</h1>
-            <h2>This is ID: {aboutPage ? aboutPage.id : null}</h2>
+          <div className="home-wrapper about-wrapper" >
+            <div className="about-box">
+              <h1>Welcome to {aboutPage.title.rendered} Page</h1>
+            </div>
+            <div className="slider-section">
+              <Slider gallery={aboutPage.acf.gallery} />
+            </div>
           </div>
         </div>
       </div>
@@ -36,3 +39,9 @@ const mapStateToProps = pages => {
 }
 
 export default connect(mapStateToProps)(About);
+
+// {
+//   aboutPage.acf.gallery.map(item => {
+//     console.log(item.sizes.large);
+//   })
+// }

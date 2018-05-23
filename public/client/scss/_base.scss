@@ -13,6 +13,16 @@ li {
   list-style: none;
 }
 
+.time-title {
+  position: fixed;
+  font-family: 'Montserrat', serif, arial;
+  font-size: 1rem;
+  color: white;
+  left: 10px;
+  top: 70px;
+  letter-spacing: 5px;
+}
+
 .bg {
   @include fullSizeWH;
   @include bg;
@@ -40,8 +50,11 @@ li {
 
 .pages-ul {
   @include flexCenterCenter;
-  li {
+  a {
     padding: 1rem;
+  }
+  a:hover, a:active, a:focus {
+    border-bottom: 1px solid rgba(92, 88, 2, 0.4);
   }
 }
 
@@ -65,4 +78,23 @@ li {
   a {
     margin: 5px;
   }
+}
+
+#move {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  animation: ani 20s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.colorBg {
+  animation: aniBg 15s infinite;
+}
+
+.single-img {
+  max-width: 60vw;
 }

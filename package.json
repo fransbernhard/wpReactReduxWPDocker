@@ -1,7 +1,7 @@
 {
   "name": "willskill",
   "version": "1.0.0",
-  "description": "Task for Will & Skill",
+  "description": "Task for Me",
   "main": "app.js",
   "scripts": {
     "start": "rimraf build-dev && NODE_ENV=development webpack --config=webpack/config.dev.js && node ./public/server/server.js",
@@ -11,13 +11,13 @@
     "build:server": "copyfiles -a -u 1 public/server/**/**/* build"
   },
   "author": {
-    "name": "Mimi Lundberg",
-    "email": "mimilundberg@fransbernhard.se",
+    "name": "fransBernhard",
+    "email": "mimi@fransbernhard.se",
     "url": "http://fransbernhard.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fransbernhard/mimist"
+    "url": "https://github.com/fransbernhard/wpReactReduxWPDocker"
   },
   "license": "ISC",
   "dependencies": {
@@ -29,17 +29,18 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "react-hot-loader": "^4.0.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "woocommerce-api": "^1.4.2"
   },
   "devDependencies": {
+    "react-hot-loader": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",

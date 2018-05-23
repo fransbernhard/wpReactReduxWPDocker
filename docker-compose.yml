@@ -3,10 +3,10 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:4.9.5
+    image: wordpress:latest
     restart: always
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ./wordpress:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_PASSWORD: root

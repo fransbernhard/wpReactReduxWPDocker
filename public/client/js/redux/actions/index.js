@@ -12,11 +12,36 @@ export const fetchAll = (URL) => {
         } else if (URL.indexOf('github') > -1){
           dispatch(fetchGithubSuccess(json))
         } else if (URL.indexOf('instagram') > -1){
-          console.log(json);
           dispatch(fetchInstaSuccess(json.data))
         } else {
           dispatch(fetchError())
         }
+      } else {
+        dispatch(fetchError())
+      }
+    })
+  }
+}
+
+export const fetchAllFlowers = (URL) => {
+  return (dispatch) => {
+    dispatch(fetchRequest());
+    return fetchPosts(URL).then(([response, json]) => {
+      if(response.status === 200){
+        dispatch(fetchFlowerPostsSuccess(json))
+      } else {
+        dispatch(fetchError())
+      }
+    })
+  }
+}
+
+export const fetchAllWcProducts = (URL) => {
+  return (dispatch) => {
+    dispatch(fetchRequest());
+    return fetchPosts(URL).then(([response, json]) => {
+      if(response.status === 200){
+        dispatch(fetchFlowerPostsSuccess(json))
       } else {
         dispatch(fetchError())
       }
@@ -59,6 +84,20 @@ const fetchPagesSuccess = payload => {
 const fetchPostsSuccess = (payload) => {
   return {
     type: types.FETCH_POSTS_SUCCESS,
+    payload
+  }
+}
+
+const fetchFlowerPostsSuccess = (payload) => {
+  return {
+    type: types.FETCH_FLOWER_POSTS_SUCCESS,
+    payload
+  }
+}
+
+const fetchAllWcProductsSuccess = (payload) => {
+  return {
+    type: types.FETCH_WC_PRODUCTS_SUCCESS,
     payload
   }
 }
