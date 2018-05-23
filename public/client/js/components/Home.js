@@ -22,9 +22,6 @@ class Home extends Component {
       const title = page.title.rendered.toLowerCase()
       if(title == "home"){
         homePage = page
-        // console.log("här: " + homePage.acf.video_url);
-      } else {
-        console.log("NOT HOME PAGE");
       }
     })
 

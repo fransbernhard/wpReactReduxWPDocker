@@ -39,7 +39,7 @@ const config = merge(commonConfig, {
         }
 		  }]
 		},
-    { test: /\.(mov|mp4)$/,
+    { test: /\.(mov|mp4|mp3)$/,
       use: [{
         loader: 'file-loader',
         options: {

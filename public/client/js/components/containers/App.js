@@ -19,6 +19,9 @@ import Header from '../common/Header.js'
 import Contact from '../Contact.js'
 import Products from './Products.js'
 
+import audio from '../../../img/anthony.mp3'
+import playImg from '../../../img/play.png'
+
 import store from "../../redux/store/index"
 
 class App extends Component {
@@ -32,17 +35,30 @@ class App extends Component {
   componentDidMount(){
     const APP_URL = 'http://0.0.0.0:80'
     const POST_URL = `${APP_URL}/wp-json/wp/v2/posts?per_page=30`
-
+    // const PAGES_URL = `${APP_URL}/wp-json/wp/v2/pages`
+    // this.props.fetchAll(PAGES_URL)
     this.props.fetchAll(POST_URL)
-
-    this.buildPostRoutes = this.buildPostRoutes.bind(this)
-    this.tick = this.tick.bind(this)
 
     this.tick();
     this.intervalID = setInterval(
       () => this.tick(),
       1000
     )
+  }
+
+  toggleAudio(){
+    const audio = document.getElementById("audio")
+    const play = document.getElementById("play")
+    const pause = document.getElementById("pause")
+    if (audio.duration > 0 && !audio.paused) {
+      audio.pause()
+      play.style.display = "block"
+      pause.style.display = "none"
+    } else {
+      audio.play()
+      play.style.display = "none"
+      pause.style.display = "block"
+    }
   }
 
   componentWillUnmount(){
@@ -74,6 +90,16 @@ class App extends Component {
   }
 
   render(){
+    // let pages = this.props.pages
+    // let homePage = {}
+    //
+    // pages.map(page => {
+    //   const title = page.title.rendered.toLowerCase()
+    //   if(title == "home"){
+    //     homePage = page
+    //   }
+    // })
+
     return (
       <div>
         <Router>
@@ -91,6 +117,20 @@ class App extends Component {
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>
             <div id="move"></div>
+            <svg height="24" width="24" id="play"className="triangle" onClick={this.toggleAudio}>
+              <polygon points="0,0 0,24 24,12" />
+              Sorry, your browser does not support inline SVG.
+            </svg>
+            <svg height="24" width="24" viewBox="0 0 24 24" id="pause" className="triangle" onClick={this.toggleAudio}>
+              <rect x="0" y="0" width="10" height="24"/>
+              <rect x="15" y="0" width="10" height="24"/>
+              Sorry, your browser does not support inline SVG.
+            </svg>
+
+            <audio id="audio" loop>
+              <source src={audio} type="audio/mpeg"/>
+              Your browser does not support the audio tag.
+            </audio>
           </div>
         </Router>
       </div>
@@ -102,8 +142,11 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({fetchAll}, dispatch)
 }
 
-const mapStateToProps = posts => {
-  return posts
+const mapStateToProps = ({posts, pages}) => {
+  return {
+    posts: posts,
+    pages: pages
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
