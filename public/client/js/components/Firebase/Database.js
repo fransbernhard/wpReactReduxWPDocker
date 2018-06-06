@@ -1,8 +1,7 @@
 import firebase from 'firebase'
 
 const config = {
-  apiKey: "AIzaSyBJUdxNxxyCMHNAtGNnwMfub-iyNDvQscw",
-  // apiKey: "xxxxxxxx",
+  apiKey: "xxxxxxxx",
   authDomain: "fir-virginity.firebaseapp.com",
   databaseURL: "https://fir-virginity.firebaseio.com",
   projectId: "fir-virginity",
