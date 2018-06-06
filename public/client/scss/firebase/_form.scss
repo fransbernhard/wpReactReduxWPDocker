@@ -1,0 +1,91 @@
+.form {
+  @include flexCenterCenter;
+  flex-flow: column;
+  width: 100vw;
+  padding: 2rem;
+
+  form {
+    background: map-get($colors, tableHeaderCol);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+
+  input {
+    border: none;
+    padding: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    margin: 4px;
+  }
+}
+
+.fbBtn:active {
+  background: pink;
+}
+
+.fbBtn:hover {
+  background: lightgray;
+}
+
+.loginBtn, .registerBtn {
+  width: 100%;
+}
+
+.btns {
+  cursor: pointer;
+  padding: 1rem;
+  width: auto;
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+.btns:active {
+  transform: translateY(2px);
+}
+
+.register {
+  background: none;
+}
+
+.fbBtn {
+  padding: 1rem;
+  margin: 5px;
+  background: pink;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.post-ul {
+  max-height: 400px;
+  overflow: scroll;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.firebase-wrapper {
+  padding-top: 5.5rem;
+}
+
+.fb-menu {
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  @include flexCenterSB;
+  color: white;
+  padding: 0.3rem 2rem;
+  h1 {
+    margin: 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.wText {
+  color: red;
+  font-family: arial;
+  font-weight: bold;
+}

@@ -43,7 +43,7 @@ const mapStateToProps = pages => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({fetchAll}, dispatch)
+  return bindActionCreators({ fetchAll }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

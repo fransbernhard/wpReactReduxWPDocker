@@ -2,16 +2,16 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackConfig = require('../../../webpack/config.dev')
-const compiler = webpack(webpackConfig)
+const config = require('../../../webpack/webpack.development.config.js')
+const compiler = webpack(config)
+
+global.appRoot = path.resolve(__dirname);
+const clientBuildPath = path.resolve(appRoot + '/build/client/')
 
 module.exports = function setup(app) {
   app.use(
     webpackDevMiddleware(compiler, {
-      publicPath: webpackConfig.output.publicPath, // required
-      stats: {
-        colors: true
-      }
+      publicPath: config.output.publicPath
     })
   )
 

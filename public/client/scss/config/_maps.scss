@@ -6,7 +6,11 @@ $colors: (
   blackOpacity: rgba(0,0,0,0.8),
   darkGrey: darkgrey,
   pink: rgba(255,192,203, 0.7),
-  darkGreen: #121f1f
+  darkGreen: #121f1f,
+  backgroundCol: rgb(241, 242, 246),
+  tableHeaderCol: rgb(162, 155, 254),
+  pinkOpacity: rgba(255,192,203, 0.7),
+  tableLineCol: rgb(94, 94, 94)
 );
 
 @function colors($key: 'white') {

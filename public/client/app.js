@@ -1,11 +1,10 @@
-
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from "./js/redux/store/index"
 
-import App from './js/components/containers/App'
+import App from './js/components/App'
 
 import './app.scss'
 

@@ -1,0 +1,12 @@
+.section-container {
+  background: map-get($colors, tableHeaderCol);
+}
+
+#section-container {
+  transition: background-color .5s ease;
+}
+
+.section {
+  @include fullSizeWH;
+  @include flexCenterCenter;
+}

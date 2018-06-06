@@ -1,65 +1,38 @@
 import * as types from "../action-types/index";
+import fb from '../../components/Firebase/Database'
+import store from "../store/index"
 
-export const fetchAll = (URL) => {
-  return (dispatch) => {
-    dispatch(fetchRequest());
-    return fetchPosts(URL).then(([response, json]) => {
-      if(response.status === 200){
-        if(URL.indexOf('posts') > -1){
-          dispatch(fetchPostsSuccess(json))
-        } else if (URL.indexOf('pages') > -1) {
-          dispatch(fetchPagesSuccess(json))
-        } else if (URL.indexOf('github') > -1){
-          dispatch(fetchGithubSuccess(json))
-        } else if (URL.indexOf('instagram') > -1){
-          dispatch(fetchInstaSuccess(json.data))
-        } else {
-          dispatch(fetchError())
-        }
-      } else {
-        dispatch(fetchError())
-      }
-    })
-  }
-}
+export const fetchAll = URL => {
+  fetch(URL).then(res => {
+    const json = res.json()
+    const status = res.status
 
-export const fetchAllFlowers = (URL) => {
-  return (dispatch) => {
-    dispatch(fetchRequest());
-    return fetchPosts(URL).then(([response, json]) => {
-      if(response.status === 200){
-        dispatch(fetchFlowerPostsSuccess(json))
-      } else {
-        dispatch(fetchError())
-      }
-    })
-  }
-}
+    if(status === 200){
+      return json
+    } else {
+      console.log("ERROR RESPONSE STATUS: " + status);
+    }
+  })
+  .then( json => {
+    if(URL.indexOf('posts') > -1){
+      store.dispatch(fetchPostsSuccess(json))
+    } else if (URL.indexOf('pages') > -1) {
+      store.dispatch(fetchPagesSuccess(json))
+    } else if (URL.indexOf('github') > -1){
+      store.dispatch(fetchGithubSuccess(json))
+    } else if (URL.indexOf('instagram') > -1){
+      store.dispatch(fetchInstaSuccess(json.data))
+    } else {
+      console.log("ERROR URL: " + URL)
+    }
+  })
 
-export const fetchAllWcProducts = (URL) => {
-  return (dispatch) => {
-    dispatch(fetchRequest());
-    return fetchPosts(URL).then(([response, json]) => {
-      if(response.status === 200){
-        dispatch(fetchFlowerPostsSuccess(json))
-      } else {
-        dispatch(fetchError())
-      }
-    })
-  }
-}
-
-const fetchRequest = () => {
   return {
-    type: types.FETCH_REQUEST
+    type: 'API CALL'
   }
 }
 
-const fetchPosts = (URL) => {
-  return fetch(URL, { method: 'GET'})
-    .then( response => Promise.all([response, response.json()]));
-}
-
+// INFO
 const fetchGithubSuccess = payload => {
   return {
     type: types.FETCH_GITHUB_POSTS,
@@ -74,6 +47,7 @@ const fetchInstaSuccess = payload => {
   }
 }
 
+// WORDPRESS
 const fetchPagesSuccess = payload => {
   return {
     type: types.FETCH_PAGES_SUCCESS,
@@ -81,29 +55,47 @@ const fetchPagesSuccess = payload => {
   }
 }
 
-const fetchPostsSuccess = (payload) => {
+const fetchPostsSuccess = payload => {
   return {
     type: types.FETCH_POSTS_SUCCESS,
     payload
   }
 }
 
-const fetchFlowerPostsSuccess = (payload) => {
+export const fetchAllFlowers = () => {
   return {
-    type: types.FETCH_FLOWER_POSTS_SUCCESS,
-    payload
+    type: types.FETCH_FLOWER_POSTS
   }
 }
 
-const fetchAllWcProductsSuccess = (payload) => {
+// FIREBASE
+export const fetchAllFbPosts = () => {
   return {
-    type: types.FETCH_WC_PRODUCTS_SUCCESS,
-    payload
+    type: types.FETCH_FBPOSTS
   }
 }
 
-const fetchError = () => {
-  return {
-    type: types.FETCH_ERROR
+export const loginUser = (email, password) => {
+  const loginInfo = {
+    email: email,
+    password: password
   }
+
+  return {
+    type: types.USER_LOGIN,
+    payload: loginInfo
+  }
+}
+
+export const registerUser = (username, email, password) => {
+    var createUserInfo = {
+      username: username,
+      email: email,
+      password: password
+    }
+
+    return {
+      type: "REGISTER_USER",
+      payload: createUserInfo
+    }
 }

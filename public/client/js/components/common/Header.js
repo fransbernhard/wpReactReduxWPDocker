@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom';
-import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
+import React, { Component } from 'react'
 
 class Header extends Component {
   render(){
@@ -12,11 +12,14 @@ class Header extends Component {
             <li><Link to={"/wordpress"}>Wordpress</Link></li>
             <li><Link to={"/info"}>Info</Link></li>
             <li><Link to={"/products"}>Products</Link></li>
+            <li><Link to={"/filter"}>Filter</Link></li>
+            <li><Link to={"/scroll"}>Scroll</Link></li>
+            <li><Link to={"/firebase"}>Firebase</Link></li>
           </ul>
         </nav>
       </header>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header

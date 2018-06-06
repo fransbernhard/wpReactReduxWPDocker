@@ -4,13 +4,22 @@
 @import "./scss/config/typography";
 @import "./scss/config/variables";
 @import "./scss/config/keyframes";
-@import "./scss/base";
-@import "./scss/single";
-@import "./scss/slider";
+
+@import "./scss/common/base";
+@import "./scss/common/footer";
+@import "./scss/common/header";
+
+@import "./scss/wordpress/single";
+@import "./scss/wordpress/posts";
+@import "./scss/wordpress/slider";
+@import "./scss/wordpress/modal";
+@import "./scss/wordpress/about";
+
+@import "./scss/firebase/form";
+
+@import "./scss/filter/filter";
+
+@import "./scss/info/info";
+
+@import "./scss/scroll";
 @import "./scss/home";
-@import "./scss/about";
-@import "./scss/modal";
-@import "./scss/posts";
-@import "./scss/footer";
-@import "./scss/header";
-@import "./scss/audio";

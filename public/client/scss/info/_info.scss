@@ -1,0 +1,25 @@
+.info-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 7rem 0rem;
+  div {
+    margin: 2rem;
+  }
+}
+
+.colorBg {
+  @include fullSizeWH;
+  @include flexCenterCenter;
+  animation: aniBg 5s infinite;
+}
+
+.instagram-ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 940px;
+
+  li {
+    margin: 0px 2px;
+  }
+}
