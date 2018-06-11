@@ -17,12 +17,6 @@ const plugins = [
   }),
   new HtmlWebpackHarddiskPlugin({
     outputPath: path.resolve(__dirname, '..', 'build-dev', 'client')
-  }),
-  new webpack.ProvidePlugin({
-    'window.jQuery'    : 'jquery',
-    'window.$'         : 'jquery',
-    'jQuery'           : 'jquery',
-    '$'                : 'jquery'
   })
 ]
 const config = merge(commonConfig, {
@@ -37,23 +31,33 @@ const config = merge(commonConfig, {
   },
   devtool: 'cheap-module-source-map',
   module: {
-    rules: [{
-		  test: /\.(png|jpg|gif)$/,
-		  use: [{
-		    loader: 'url-loader',
-        options: {
-          limit: 15000
-        }
-		  }]
-		},
-    { test: /\.(mov|mp4|mp3)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]'
-        }
-      }]
-    }]
+    rules: [
+      {
+				test: /\.(sass|scss)$/, // Compile style for development
+				use: [
+					'style-loader',
+					'css-loader',
+					'sass-loader'
+				]
+			},
+      {
+  		  test: /\.(png|jpg|gif)$/,
+  		  use: [{
+  		    loader: 'url-loader',
+          options: {
+            limit: 15000
+          }
+  		  }]
+  		},
+      { test: /\.(mov|mp4|mp3)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]'
+          }
+        }]
+      }
+    ]
   },
   plugins: plugins
 })

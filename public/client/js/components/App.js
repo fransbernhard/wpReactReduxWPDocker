@@ -8,7 +8,6 @@ import {
 
 import { connect } from "react-redux"
 import { fetchAll } from "../redux/actions/index"
-import { bindActionCreators } from "redux"
 
 import Home from './Home.js'
 import Filter from './Filter/Filter.js'
@@ -35,6 +34,8 @@ class App extends Component {
 
     const APP_URL = 'http://0.0.0.0:80'
     const POST_URL = `${APP_URL}/wp-json/wp/v2/posts?per_page=30`
+    const PAGES_URL = `${APP_URL}/wp-json/wp/v2/pages`
+    this.props.fetchAll(PAGES_URL)
     this.props.fetchAll(POST_URL)
   }
 
@@ -71,22 +72,10 @@ class App extends Component {
     const time = ("0" + d.getHours()).slice(-2) + ':' + ("0" + d.getMinutes()).slice(-2) + ':' + ("0" + d.getSeconds()).slice(-2);
     const date = [("0" + d.getDate()).slice(-2),
       ("0" + (d.getMonth() + 1)).slice(-2),
-      ("0" + d.getFullYear()).slice(-2)].join('/');
+      ("0" + d.getFullYear()).slice(-2)].join('/')
 
     this.setState({
       time: [date, time].join(' ')
-    });
-  }
-
-  buildPostRoutes(data){
-    return data.map((post,i) => {
-      return (
-        <Route
-          key={i}
-          component={Single}
-          path={`/archive/${post.slug}`}
-        />
-      )
     })
   }
 
@@ -108,10 +97,7 @@ class App extends Component {
               <Route exact path={'/filter'} component={Filter}/>
               <Route exact path={'/scroll'} component={Scroll}/>
               <Route exact path={'/firebase'} component={Firebase}/>
-              {this.props.posts ?
-                this.buildPostRoutes(this.props.posts)
-                : null
-              }
+              <Route exact path={'/archive/:query'} component={Single}/>
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>
 
@@ -137,12 +123,27 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchAll }, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  fetchAll: url => dispatch(fetchAll(url))
+})
 
-const mapStateToProps = posts => {
-  return posts
-}
+export default connect(null, mapDispatchToProps)(App)
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// buildPostRoutes(data){
+//   return data.map((post,i) => {
+//     return (
+//       <Route
+//         key={i}
+//         component={Single}
+//         path={`/archive/${post.slug}`}
+//       />
+//     )
+//   })
+// }
+
+// {
+//   this.props.posts
+//     ? this.buildPostRoutes(this.props.posts)
+//     : null
+// }

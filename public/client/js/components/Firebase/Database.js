@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const config = {
-  apiKey: "xxxxxxxx",
-  authDomain: "fir-virginity.firebaseapp.com",
-  databaseURL: "https://fir-virginity.firebaseio.com",
-  projectId: "fir-virginity",
-  storageBucket: "fir-virginity.appspot.com",
-  messagingSenderId: "990904431448"
+  apiKey: "AIzaSyAT0jCNbGIdHtZhNVvOphbwISPbXnXMQAk",
+  authDomain: "myreactproject-c13f2.firebaseapp.com",
+  databaseURL: "https://myreactproject-c13f2.firebaseio.com",
+  projectId: "myreactproject-c13f2",
+  storageBucket: "myreactproject-c13f2.appspot.com",
+  messagingSenderId: "478522543107"
 }
 
 const app = firebase.initializeApp(config)

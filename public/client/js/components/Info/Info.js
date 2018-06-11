@@ -4,11 +4,11 @@ import GitHubPost from './GitHubPost'
 
 import { connect } from "react-redux"
 import { fetchAll } from "../../redux/actions/index"
-import { bindActionCreators } from "redux"
 
 class Info extends Component {
   componentDidMount(){
-    const token = 'ACCESS_TOKEN'
+    // const token = 'ACCESS_TOKEN'
+    const token = '173775459.7b4e81a.77d3c3dd4a0a465282d198bb00fcc3ff'
     const userId = '173775459'
     const INSTA_URL = 'https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + token
 
@@ -28,8 +28,8 @@ class Info extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({fetchAll}, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  fetchAll: url => dispatch(fetchAll(url))
+})
 
 export default connect(null, mapDispatchToProps)(Info);

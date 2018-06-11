@@ -47,15 +47,18 @@ class Slider extends Component {
   render(){
     return(
       <div className="slider-container">
-        { this.props.gallery.map((dat, i) =>
-          <div className="slide fade" key={i}>
-            <div className="slide-img" style={{backgroundImage: `url(${this.props.gallery[this.state.sliderIndex].url})`}}/>
-            <div className="prev-next-container">
-              <a className="prev" onClick={() => this.changeSlides(-1)}>&#10094;</a>
-              <a className="next" onClick={() => this.changeSlides(1)}>&#10095;</a>
+        { this.props.gallery != null
+          ? this.props.gallery.map((dat, i) =>
+            <div className="slide fade" key={i}>
+              <div className="slide-img" style={{backgroundImage: `url(${this.props.gallery[this.state.sliderIndex].url})`}}/>
+              <div className="prev-next-container">
+                <a className="prev" onClick={() => this.changeSlides(-1)}>&#10094;</a>
+                <a className="next" onClick={() => this.changeSlides(1)}>&#10095;</a>
+              </div>
             </div>
-          </div>
-        )}
+          )
+          : null
+        }
       </div>
     )
   }

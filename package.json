@@ -33,7 +33,8 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "woocommerce": "^2.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -51,7 +52,7 @@
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "open": "^0.0.5",
-    "postcss-loader": "^2.1.3",
+    "postcss-loader": "^2.1.5",
     "react-hot-loader": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",

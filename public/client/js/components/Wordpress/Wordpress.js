@@ -5,7 +5,6 @@ import Flowers from './Flowers.js'
 
 import { connect } from "react-redux";
 import { fetchAll, fetchAllFlowers } from "../../redux/actions/index"
-import { bindActionCreators } from "redux"
 
 class Wordpress extends Component {
   componentDidMount(){
@@ -28,8 +27,8 @@ class Wordpress extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({fetchAllFlowers}, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  fetchAllFlowers: () => dispatch(fetchAllFlowers())
+})
 
 export default connect(null, mapDispatchToProps)(Wordpress);

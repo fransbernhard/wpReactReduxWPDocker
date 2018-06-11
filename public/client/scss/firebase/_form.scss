@@ -67,6 +67,7 @@
 
 .firebase-wrapper {
   padding-top: 5.5rem;
+  @include fullSizeWH;
 }
 
 .fb-menu {

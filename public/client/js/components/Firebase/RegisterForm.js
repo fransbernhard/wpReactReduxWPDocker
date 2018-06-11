@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-import fb from './Database'
-
-// REDUX
-import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
-import { registerUser } from "../../redux/actions/index"
+import fb, { auth, provider } from './Database'
 
 class RegisterForm extends Component {
 	constructor(props){
-    super(props);
+    super(props)
 
 		this.state = {
       email: '',
 			username: '',
-      password: ''
+      password: '',
+			errorText: ''
     }
 
 		this.handleChangeEmail = this.handleChangeEmail.bind(this)
@@ -22,17 +18,45 @@ class RegisterForm extends Component {
     this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
   }
 
-	handleChangeEmail(e) {
-    this.setState({
-      email: e.target.value,
-    })
-  }
+	handleSubmitRegister(e) {
+		e.preventDefault()
+		const email = this.state.email
+		const password = this.state.password
+		const username = this.state.username
 
-  handleChangePwd(e) {
-    this.setState({
-      password: e.target.value
-    })
-  }
+		fb.auth().createUserWithEmailAndPassword(email, password)
+			.then(() => {
+				user = fb.auth().currentUser
+			})
+			.then(() => {
+				user.updateProfile({
+					displayName: username
+				}).then(() => {
+					console.log("displayname update successful")
+				}, function(e) {
+					console.log("ERROR CHANGING DISPLAYNAME: " + e);
+					this.setState({
+						errorText: e
+					})
+				})
+			}).catch( e => {
+				this.setState({
+					errorText: e.message
+				})
+			})
+	}
+
+	handleChangeEmail(e) {
+		this.setState({
+			email: e.target.value,
+		})
+	}
+
+	handleChangePwd(e) {
+		this.setState({
+			password: e.target.value
+		})
+	}
 
 	handleChangeUsername(e) {
 		this.setState({
@@ -40,18 +64,12 @@ class RegisterForm extends Component {
 		})
 	}
 
-	handleSubmitRegister(e) {
-		e.preventDefault()
-		this.props.registerUser(this.state.username, this.state.email, this.state.password)
-	}
-
 	render(){
 	  return (
 			<div>
 				<p className="wText" id="wText">{this.props.errorText ? this.props.errorText : ""}</p>
-				{ this.props.fbStatus
-					? null
-					: <div className="form registerForm" id="registerBox">
+				{ this.props.showRegister
+					? <div className="form registerForm" id="registerBox">
 							<form id="form">
 								<input type="text" onChange={this.handleChangeUsername} placeholder="Username" name="uname" />
 								<input type="text" onChange={this.handleChangeEmail} placeholder="Email" name="email" />
@@ -59,21 +77,11 @@ class RegisterForm extends Component {
 								<button id="registerBtn" className="fbBtn registerBtn" onClick={this.handleSubmitRegister}>Register</button>
 							</form>
 						</div>
+						: null
 					}
 			</div>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-		fbStatus: state.fbStatus,
-    errorText: state.errorText
-	}
-}
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ registerUser }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
+export default RegisterForm

@@ -12,8 +12,7 @@ export const fetchAll = URL => {
     } else {
       console.log("ERROR RESPONSE STATUS: " + status);
     }
-  })
-  .then( json => {
+  }).then( json => {
     if(URL.indexOf('posts') > -1){
       store.dispatch(fetchPostsSuccess(json))
     } else if (URL.indexOf('pages') > -1) {
@@ -68,6 +67,39 @@ export const fetchAllFlowers = () => {
   }
 }
 
+export const fetchPostBySlug = URL => {
+  return {
+    type: types.FETCH_POST_BY_SLUG,
+    payload: URL
+  }
+}
+
+export const fetchAllWcProducts = URL => {
+  fetch(URL).then(res => {
+    const json = res.json()
+    const status = res.status
+
+    if(status === 200){
+      return json
+    } else {
+      console.log("ERROR RESPONSE STATUS: " + status);
+    }
+  }).then( json => {
+    store.dispatch(fetchAllWcProductsSuccess(json))
+  })
+
+  return {
+    type: 'FETCH ALL WC'
+  }
+}
+
+export const fetchAllWcProductsSuccess = payload => {
+  return {
+    type: types.FETCH_WC_PRODUCTS_SUCCESS,
+    payload
+  }
+}
+
 // FIREBASE
 export const fetchAllFbPosts = () => {
   return {
@@ -75,27 +107,14 @@ export const fetchAllFbPosts = () => {
   }
 }
 
-export const loginUser = (email, password) => {
-  const loginInfo = {
-    email: email,
-    password: password
-  }
+export const loginStatus = () => {
+  var status = true
+
+  var user = fb.auth().currentUser
+  user ? status = true : status = false
 
   return {
-    type: types.USER_LOGIN,
-    payload: loginInfo
+    type: types.LOGIN_STATUS,
+    payload: status
   }
-}
-
-export const registerUser = (username, email, password) => {
-    var createUserInfo = {
-      username: username,
-      email: email,
-      password: password
-    }
-
-    return {
-      type: "REGISTER_USER",
-      payload: createUserInfo
-    }
 }

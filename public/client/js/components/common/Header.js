@@ -12,7 +12,6 @@ class Header extends Component {
             <li><Link to={"/wordpress"}>Wordpress</Link></li>
             <li><Link to={"/info"}>Info</Link></li>
             <li><Link to={"/products"}>Products</Link></li>
-            <li><Link to={"/filter"}>Filter</Link></li>
             <li><Link to={"/scroll"}>Scroll</Link></li>
             <li><Link to={"/firebase"}>Firebase</Link></li>
           </ul>
