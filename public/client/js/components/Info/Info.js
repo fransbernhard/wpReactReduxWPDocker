@@ -7,8 +7,7 @@ import { fetchAll } from "../../redux/actions/index"
 
 class Info extends Component {
   componentDidMount(){
-    // const token = 'ACCESS_TOKEN'
-    const token = '173775459.7b4e81a.77d3c3dd4a0a465282d198bb00fcc3ff'
+    const token = 'ACCESS_TOKEN'
     const userId = '173775459'
     const INSTA_URL = 'https://api.instagram.com/v1/users/' + userId + '/media/recent/?access_token=' + token
 
